@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Car.css';
+import classes from './Car.module.scss';
 import PropTypes from 'prop-types';
 import withClass from '../hoc/withClass';
 
