@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
-import Layout from './hoc/Layout/Layout';
-import Quiz from './containers/Quiz/Quiz';
+import './App.scss';
+import About from './About/About';
+import Cars from './Cars/Cars';
 
 class App extends Component {
 	render() {
 		return (
-			<Layout>
-				<Quiz />
-			</Layout>
+			<div>
+				<nav className='nav'>
+					<ul>
+						<li>
+							<a href='/'>Home</a>
+						</li>
+						<li>
+							<a href='/about'>About</a>
+						</li>
+					</ul>
+				</nav>
+
+				<hr />
+				<About />
+
+				<Cars />
+			</div>
 		);
 	}
 }
