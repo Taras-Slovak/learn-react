@@ -2,7 +2,7 @@ import classes from './QuizList.module.scss';
 import { NavLink } from 'react-router-dom';
 import React, { Component } from 'react';
 import Loader from '../../components/UI/Loader/Loader';
-import axios from 'axios';
+import axios from '../../axios/axios-quiz';
 
 export default class QuizList extends Component {
 	state = {
@@ -19,11 +19,10 @@ export default class QuizList extends Component {
 			);
 		});
 	}
+
 	async componentDidMount() {
 		try {
-			const response = await axios.get(
-				'https://learn-react-c38e3-default-rtdb.europe-west1.firebasedatabase.app/quizes.json'
-			);
+			const response = await axios.get('/quizes.json');
 
 			const quizes = [];
 

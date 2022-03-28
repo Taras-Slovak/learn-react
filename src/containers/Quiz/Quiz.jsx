@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import classes from './Quiz.module.scss';
 import ActiveQuiz from '../../components/ActiveQuiz/ActiveQuiz';
 import FinishedQuiz from '../../components/FinishedQuiz/FinishedQuiz';
+import axios from '../../axios/axios-quiz';
+import Loader from '../../components/UI/Loader/Loader';
 
 class Quiz extends Component {
 	state = {
@@ -9,30 +11,8 @@ class Quiz extends Component {
 		isFinished: false,
 		activeQuestion: 0,
 		answerState: null,
-		quiz: [
-			{
-				question: 'What color is the sky?',
-				rightAnswerId: 2,
-				id: 1,
-				answers: [
-					{ text: 'Black', id: 1 },
-					{ text: 'Blue', id: 2 },
-					{ text: 'Red', id: 3 },
-					{ text: 'Green', id: 4 }
-				]
-			},
-			{
-				question: 'What was year when Lviv founded?',
-				rightAnswerId: 3,
-				id: 2,
-				answers: [
-					{ text: '1251', id: 1 },
-					{ text: '1241', id: 2 },
-					{ text: '1256', id: 3 },
-					{ text: '1220', id: 4 }
-				]
-			}
-		]
+		quiz: [],
+		loading: true
 	};
 
 	onAnswerClickHandler = (answerId) => {
@@ -91,14 +71,37 @@ class Quiz extends Component {
 		});
 	};
 
+	async componentDidMount() {
+		console.log(this.props.match.params.id);
+		try {
+			const response = await axios.get(
+				`/quizes/${this.props.match.params.id}.json`
+			);
+			const quiz = response.data;
+
+			this.setState({
+				quiz,
+				loading: false
+			});
+		} catch (e) {
+			console.log(e);
+		}
+	}
+
 	render() {
 		return (
 			<div className={classes.Quiz}>
 				<div className={classes.QuizWrapper}>
 					<h1>Answer all the questions</h1>
 
-					{this.state.isFinished ? (
-						<FinishedQuiz results={this.state.results} quiz={this.state.quiz} onRetry={this.retryHandler} />
+					{this.state.loading ? (
+						<Loader />
+					) : this.state.isFinished ? (
+						<FinishedQuiz
+							results={this.state.results}
+							quiz={this.state.quiz}
+							onRetry={this.retryHandler}
+						/>
 					) : (
 						<ActiveQuiz
 							answers={this.state.quiz[this.state.activeQuestion].answers}
