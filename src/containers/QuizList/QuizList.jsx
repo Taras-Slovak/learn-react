@@ -4,23 +4,42 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 export default class QuizList extends Component {
+	state = {
+		quizes: [],
+		loading: true
+	};
+
 	renderQuizes() {
-		return [1, 2, 3].map((quiz, index) => {
+		return this.state.quizes.map((quiz) => {
 			return (
-				<li key={index}>
-					<NavLink to={'/quiz/' + quiz}>Test {quiz}</NavLink>
+				<li key={quiz.id}>
+					<NavLink to={'/quiz/' + quiz.id}>{quiz.name}</NavLink>
 				</li>
 			);
 		});
 	}
-	componentDidMount() {
-		axios
-			.get(
-				'https://learn-react-c38e3-default-rtdb.europe-west1.firebasedatabase.app/quiz.json'
-			)
-			.then((response) => {
-				console.log(response);
+	async componentDidMount() {
+		try {
+			const response = await axios.get(
+				'https://learn-react-c38e3-default-rtdb.europe-west1.firebasedatabase.app/quizes.json'
+			);
+
+			const quizes = [];
+
+			Object.keys(response.data).forEach((key, index) => {
+				quizes.push({
+					id: key,
+					name: `Test №${index + 1}`
+				});
 			});
+
+			this.setState({
+				quizes,
+				loading: false
+			});
+		} catch (e) {
+			console.log(e);
+		}
 	}
 
 	render() {
