@@ -4,6 +4,14 @@ import ActiveQuiz from '../../components/ActiveQuiz/ActiveQuiz';
 import FinishedQuiz from '../../components/FinishedQuiz/FinishedQuiz';
 import axios from '../../axios/axios-quiz';
 import Loader from '../../components/UI/Loader/Loader';
+import { useParams } from 'react-router-dom';
+
+export function withRouter(Children) {
+	return (props) => {
+		const match = { params: useParams() };
+		return <Children {...props} match={match} />;
+	};
+}
 
 class Quiz extends Component {
 	state = {
@@ -118,4 +126,4 @@ class Quiz extends Component {
 	}
 }
 
-export default Quiz;
+export default withRouter(Quiz);
