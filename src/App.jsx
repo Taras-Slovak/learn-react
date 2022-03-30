@@ -3,12 +3,6 @@ import './App.scss';
 import { connect } from 'react-redux';
 
 class App extends Component {
-	updateCounter(value) {
-		// this.setState({
-		// 	counter: this.state.counter + value
-		// });
-	}
-
 	render() {
 		return (
 			<div className={'App'}>
@@ -19,8 +13,8 @@ class App extends Component {
 				<hr />
 
 				<div className='Actions'>
-					<button onClick={() => this.updateCounter(1)}>Add 1</button>
-					<button onClick={() => this.updateCounter(-1)}>Subtract 1</button>
+					<button onClick={this.props.onAdd}>&#43; 1</button>
+					<button onClick={this.props.onSub}>&#45; 1</button>
 				</div>
 			</div>
 		);
@@ -33,4 +27,11 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch) {
+	return {
+		onAdd: () => dispatch({ type: 'ADD' }),
+		onSub: () => dispatch({ type: 'SUB' })
+	};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
