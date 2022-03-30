@@ -13,7 +13,7 @@ class App extends Component {
 		return (
 			<div className={'App'}>
 				<h1>
-					Counter <strong>{this.state.counter}</strong>
+					Counter <strong>{this.props.counter}</strong>
 				</h1>
 
 				<hr />
