@@ -21,7 +21,7 @@ export function fetchQuizes() {
 			Object.keys(response.data).forEach((key, index) => {
 				quizes.push({
 					id: key,
-					name: `Test №${index + 1}`
+					name: `Тест №${index + 1}`
 				});
 			});
 
