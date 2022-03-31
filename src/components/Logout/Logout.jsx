@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Navigate, Route } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { logout } from '../../store/actions/auth';
 
 class Logout extends Component {
@@ -9,7 +9,11 @@ class Logout extends Component {
 	}
 
 	render() {
-		return <Route path='*' element={<Navigate to='/' replace />} />;
+		return (
+			<Routes>
+				<Route path='*' element={<Navigate to='/' replace />} />
+			</Routes>
+		);
 	}
 }
 
