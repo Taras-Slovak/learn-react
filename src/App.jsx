@@ -1,8 +1,16 @@
 import React from 'react';
-import './App.scss';
+import { Navbar } from './components/Navbar';
+import { Home } from './pages/Home';
 
 function App() {
-	return <div className='App'></div>;
+	return (
+		<React.Fragment>
+			<Navbar />
+			<div className='container pt-4'>
+				<Home />
+			</div>
+		</React.Fragment>
+	);
 }
 
 export default App;
