@@ -1,12 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import { GithubContext } from '../context/github/githubContext';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Repos } from '../components/Repos';
 
 export const Profile = ({ match }) => {
 	const { getUser, getRepos, loading, user, repos } = useContext(GithubContext);
-	console.log(match);
-	const urlName = match.params.name;
+
+	const { name: urlName } = useParams(match);
+
+	console.log();
 
 	useEffect(() => {
 		getUser(urlName);
@@ -32,6 +34,8 @@ export const Profile = ({ match }) => {
 		public_repos,
 		public_gists
 	} = user;
+
+	console.log(html_url);
 
 	return (
 		<>
@@ -82,12 +86,12 @@ export const Profile = ({ match }) => {
 								)}
 							</ul>
 
-							<div className='badge badge-primary'>Followers: {followers}</div>
-							<div className='badge badge-success'>Following: {following}</div>
-							<div className='badge badge-info'>
+							<div className='badge bg-primary m-2'>Followers: {followers}</div>
+							<div className='badge bg-success m-2'>Following: {following}</div>
+							<div className='badge bg-info m-2'>
 								Repositories: {public_repos}
 							</div>
-							<div className='badge badge-dark'>Gists: {public_gists}</div>
+							<div className='badge bg-dark m-2'>Gists: {public_gists}</div>
 						</div>
 					</div>
 				</div>
