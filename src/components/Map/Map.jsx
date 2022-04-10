@@ -13,11 +13,13 @@ import useStyles from './style';
 const Map = ({
 	setCoordinates,
 	setBounds,
-	coordinates
+	coordinates,
+	places
 }) => {
 	const classes = useStyles();
-	const isMobile = useMediaQuery('(min-width:600px)');
-
+	const isDesktop = useMediaQuery('(min-width:600px)');
+	const imgURL =
+		'https://images.unsplash.com/photo-1576723664541-23f84c3f93fb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80';
 	return (
 		<div className={classes.mapContainer}>
 			<GoogleMapReact
@@ -40,7 +42,45 @@ const Map = ({
 					});
 				}}
 				// onChildClick={''}
-			></GoogleMapReact>
+			>
+				{places?.map((place, i) => (
+					<div
+						className={classes.markerContainer}
+						lat={Number(place.latitude)}
+						lng={Number(place.longitude)}
+						key={i}
+					>
+						{!isDesktop ? (
+							<LocationOnOutlinedIcon
+								color='primary'
+								fontSize='large'
+							/>
+						) : (
+							<Paper
+								elevation={3}
+								className={classes.paper}
+							>
+								<Typography
+									className={classes.typography}
+									variant='subtitle2'
+									gutterBottom
+								>
+									{place.name}
+								</Typography>
+								<img
+									className={classes.pointer}
+									src={
+										place.photo
+											? place.photo.images.large.url
+											: imgURL
+									}
+									alt={place.name}
+								/>
+							</Paper>
+						)}
+					</div>
+				))}
+			</GoogleMapReact>
 		</div>
 	);
 };
