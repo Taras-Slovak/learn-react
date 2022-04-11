@@ -23,7 +23,7 @@ const App = () => {
 				setCoordinates({ lat: latitude, lng: longitude });
 			}
 		);
-	});
+	}, []);
 
 	useEffect(() => {
 		setIsLoading(true);
