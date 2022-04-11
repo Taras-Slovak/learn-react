@@ -6,7 +6,7 @@ import {
 	useMediaQuery
 } from '@material-ui/core';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import Rating from '@material-ui/lab';
+import Rating from '@material-ui/lab/Rating';
 
 import useStyles from './style';
 
@@ -75,6 +75,11 @@ const Map = ({
 											: imgURL
 									}
 									alt={place.name}
+								/>
+								<Rating
+									size='small'
+									value={Number(place.rating)}
+									readOnly
 								/>
 							</Paper>
 						)}
