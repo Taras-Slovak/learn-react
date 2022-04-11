@@ -15,10 +15,18 @@ import Rating from '@material-ui/lab/Rating';
 
 import useStyles from './style';
 
-const PlaceDetails = ({ place }) => {
-	const classes = useStyles();
+const PlaceDetails = ({ place, selected, refProps }) => {
 	const imgURL =
 		'https://images.unsplash.com/photo-1576723664541-23f84c3f93fb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80';
+
+	const classes = useStyles();
+
+	if (selected) {
+		refProps?.current?.scrollIntoView({
+			behavior: 'smooth',
+			block: 'start'
+		});
+	}
 
 	return (
 		<Card elevation={6}>
