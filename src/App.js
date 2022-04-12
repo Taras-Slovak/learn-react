@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React, { useEffect, useState } from 'react';
 import { CssBaseline, Grid } from '@material-ui/core';
 import { getPlacesData, getWeatherData } from './api';

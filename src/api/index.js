@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable consistent-return */
 import axios from 'axios';
 
 export const getPlacesData = async (type, sw, ne) => {
@@ -21,7 +23,7 @@ export const getPlacesData = async (type, sw, ne) => {
     );
     return data;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 };
 
