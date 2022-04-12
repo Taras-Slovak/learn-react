@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CssBaseline, Grid } from '@material-ui/core';
 
-import { getPlaceData, getWeatherData } from './api';
+import { getPlacesData, getWeatherData } from './api';
 import Header from './components/Header/Header';
 import List from './components/List/List';
 import Map from './components/Map/Map';
@@ -43,7 +43,7 @@ const App = () => {
 				(data) => setWeatherData(data)
 			);
 
-			getPlaceData(type, bounds.sw, bounds.ne).then(
+			getPlacesData(type, bounds.sw, bounds.ne).then(
 				(data) => {
 					setPlaces(
 						data.filter(
