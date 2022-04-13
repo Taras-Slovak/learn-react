@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Layout, Typography, Space, Divider } from 'antd';
-import Navbar from './Components/Navbar';
+import { Navbar } from './Components';
 
 function App() {
   return (
