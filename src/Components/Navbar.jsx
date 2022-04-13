@@ -1,9 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Button, Menu, Typography, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
-import { HomeOutlined, MoneyCollectOutlined,
-  BulbOutlined, FondOutlined,
-  MenuOutlined } from '@ant-design/icons';
+import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOutlined } from '@ant-design/icons';
 
 import icon from '../images/cryptocurrency.png';
 
@@ -17,16 +15,16 @@ function Navbar() {
         </Typography.Title>
       </div>
       <Menu theme="dark">
-        <Menu.Item icon={HomeOutlined}>
+        <Menu.Item key={0} icon={HomeOutlined}>
           <Link to="/">Home</Link>
         </Menu.Item>
-        <Menu.Item icon={FondOutlined}>
+        <Menu.Item key={1} icon={FundOutlined}>
           <Link to="cryptocurrencies">Cryptocurrencies</Link>
         </Menu.Item>
-        <Menu.Item icon={MoneyCollectOutlined}>
+        <Menu.Item key={2} icon={MoneyCollectOutlined}>
           <Link to="exchanges">Exchanges</Link>
         </Menu.Item>
-        <Menu.Item icon={BulbOutlined}>
+        <Menu.Item key={3} icon={BulbOutlined}>
           <Link to="news">News</Link>
         </Menu.Item>
       </Menu>
