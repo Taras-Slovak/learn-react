@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import { Layout, Typography, Space, Divider } from 'antd';
 
 import { Navbar, Homepage, Exchanges, Cryptocurrencies,
@@ -22,8 +22,21 @@ function App() {
             </Routes>
           </div>
         </Layout>
+        <div className="footer">
+          <Typography.Title
+            level={5}
+            style={{ color: 'white', textAlign: 'center' }}
+          >
+            Cryptoverse <br />
+            All rights reserved
+          </Typography.Title>
+          <Space>
+            <Link to="/">Home</Link>
+            <Link to="exchanges">Exchanges</Link>
+            <Link to="news">News</Link>
+          </Space>
+        </div>
       </div>
-      <div className="footer">Some</div>
     </div>
 
   );
