@@ -3,7 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import { Layout, Typography, Space, Divider } from 'antd';
 
 import { Navbar, Homepage, Exchanges, Cryptocurrencies,
-        CryptoDetails, News } from './Components';
+        CryptoDetails, News } from './components';
 import './App.css';
 
 function App() {
