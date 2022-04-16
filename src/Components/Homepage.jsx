@@ -10,9 +10,9 @@ const { Title } = Typography;
 function Homepage() {
 // eslint-disable-next-line no-unused-vars
 const { data, isFetching } = useGetCryptosQuery();
+const globalStats = data?.data?.stats;
 
-console.log('TEST!!!!!!!!!!', data);
-console.log('TEST!!!!!!!!!!', isFetching);
+if (isFetching) return 'Loading...';
 
   return (
     <>
@@ -22,7 +22,7 @@ console.log('TEST!!!!!!!!!!', isFetching);
       >Global Crypto Stats
       </Title>
       <Row>
-        <Col span={12}> <Statistic title="Total Cryptocurrencies" value="5" /></Col>
+        <Col span={12}> <Statistic title="Total Cryptocurrencies" value={globalStats.total} /></Col>
         <Col span={12}> <Statistic title="Total Exchanges" value="5" /></Col>
         <Col span={12}> <Statistic title="Total Market Cup" value="5" /></Col>
         <Col span={12}> <Statistic title="Total 24h Volume" value="5" /></Col>
