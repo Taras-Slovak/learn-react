@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import millify from 'millify';
 import { Typography, Row, Col, Statistic } from 'antd';
 import { Link } from 'react-router-dom';
@@ -9,8 +8,7 @@ import { Cryptocurrencies, News } from '.';
 const { Title } = Typography;
 
 function Homepage() {
-// eslint-disable-next-line no-unused-vars
-const { data, isFetching } = useGetCryptosQuery();
+const { data, isFetching } = useGetCryptosQuery(10);
 const globalStats = data?.data?.stats;
 
 if (isFetching) return 'Loading...';
