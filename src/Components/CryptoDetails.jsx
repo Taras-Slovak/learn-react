@@ -9,7 +9,7 @@ import {
   CheckOutlined, NumberOutlined, ThunderboltOutlined,
 } from '@ant-design/icons';
 import { useGetCryptoDetailsQuery } from '../services/cryptoApi';
-import { Loader } from '.';
+import { Loader, LineChart } from '.';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -82,11 +82,11 @@ function CryptoDetails() {
       >
         {time.map((date) => <Option key={date}>{date}</Option>)}
       </Select>
-      {/* <LineChart
+      <LineChart
         coinHistory={coinHistory}
         currentPrice={millify(cryptoDetails?.price)}
         coinName={cryptoDetails?.name}
-      /> */}
+      />
       <Col className="stats-container">
         <Col className="coin-value-statistics">
           <Col className="coin-value-statistics-heading">
