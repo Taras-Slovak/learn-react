@@ -8,7 +8,7 @@ import {
   ExclamationCircleOutlined, StopOutlined, TrophyOutlined,
   CheckOutlined, NumberOutlined, ThunderboltOutlined,
 } from '@ant-design/icons';
-import { useGetCryptoDetailsQuery } from '../services/cryptoApi';
+import { useGetCryptoDetailsQuery, useGetCryptoHistoryQuery } from '../services/cryptoApi';
 import { Loader, LineChart } from '.';
 
 const { Title, Text } = Typography;
@@ -18,6 +18,7 @@ function CryptoDetails() {
   const { coinId } = useParams();
   const [timePeriod, setTimePeriod] = useState('7d');
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
+  const { data: coinHistory } = useGetCryptoHistoryQuery(coinId, timePeriod);
   const cryptoDetails = data?.data?.coin;
 
   const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
