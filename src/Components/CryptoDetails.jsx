@@ -16,14 +16,14 @@ const { Option } = Select;
 
 function CryptoDetails() {
   const { coinId } = useParams();
-  const [timePeriod, setTimePeriod] = useState('7d');
+  const [timeperiod, setTimeperiod] = useState('3h');
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
-  const { data: coinHistory } = useGetCryptoHistoryQuery(coinId, timePeriod);
+  const { data: coinHistory } = useGetCryptoHistoryQuery(coinId, timeperiod);
   const cryptoDetails = data?.data?.coin;
 
-  const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
+  console.log(coinId);
 
-  if (isFetching) return <Loader />;
+  const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
   const stats = [
     { title: 'Price to USD',
@@ -67,6 +67,8 @@ function CryptoDetails() {
       icon: <ExclamationCircleOutlined /> },
 
   ];
+
+  if (isFetching) return <Loader />;
   return (
     <Col className="coin-detail-container">
       <Col className="coin-heading-container">
@@ -79,7 +81,7 @@ function CryptoDetails() {
         defaultValue="7d"
         className="select-timeperiod"
         placeholder="Select Timeperiod"
-        onChange={(value) => setTimePeriod(value)}
+        onChange={(value) => setTimeperiod(value)}
       >
         {time.map((date) => <Option key={date}>{date}</Option>)}
       </Select>
