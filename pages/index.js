@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Flex, Box, Text, Button } from '@chakra-ui/react';
+import { Flex, Box, Text, Button, Heading } from '@chakra-ui/react';
 
 import Property from '../components/Property';
 import { baseUrl, fetchApi } from '../utils/fetchApi';
@@ -43,6 +43,9 @@ export const Banner = ({
 export default function Home({ propertiesForSale, propertiesForRent }) {
   return (
     <Box>
+      <Heading as='h1' size='2xl' pt='12' pb='6' textAlign='center'>
+        Search properties for sale and to rent in the UAE
+      </Heading>
       <Banner
         purpose='RENT A HOME'
         title1='Rental Homes for'
