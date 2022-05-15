@@ -16,7 +16,7 @@ export function Navbar({ setDarkTheme, darkTheme }) {
           font-bold text-white py-1 px-2 rounded
           dark:bg-gray-50 dark:text-gray-900"
           >
-            Google 🔎
+            Google Search 🔎
           </p>
         </Link>
         <button
