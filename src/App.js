@@ -1,5 +1,3 @@
-/* eslint-disable import/named */
-
 import React, { useState } from 'react';
 
 import { Footer } from './components/Footer';
