@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useMemo, useState } from 'react';
+/* eslint-disable react/jsx-no-constructed-context-values */
+import React, { createContext, useContext, useState } from 'react';
 
 const StateContext = createContext();
 const baseUrl = 'https://google-search3.p.rapidapi.com/api/v1';
@@ -15,7 +16,7 @@ export function StateContextProvider({ children }) {
       method: 'GET',
       headers: {
         'x-rapidapi-host': 'google-search3.p.rapidapi.com',
-        'x-rapidapi-key': process.env.REACT_APP_GOOGLE_SEARCH_KEY,
+        'x-rapidapi-key': process.env.REACT_APP_API_KEY,
       },
     });
 
@@ -25,10 +26,8 @@ export function StateContextProvider({ children }) {
     setLoading(false);
   };
 
-  const useMemory = useMemo(() => ({ getResults, results, searchTerm, setSearchTerm, loading }), []);
-
   return (
-    <StateContext.Provider value={useMemory}>
+    <StateContext.Provider value={{ getResults, results, searchTerm, setSearchTerm, loading }}>
       {children}
     </StateContext.Provider>
   );
